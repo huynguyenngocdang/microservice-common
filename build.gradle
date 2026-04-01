@@ -28,3 +28,7 @@ dependencyManagement {
         mavenBom "org.springframework.boot:spring-boot-dependencies:4.0.5"
     }
 }
+
+tasks.withType(GenerateModuleMetadata).configureEach {
+    suppressedValidationErrors.add('dependencies-without-versions')
+}
