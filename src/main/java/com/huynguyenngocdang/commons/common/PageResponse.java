@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 import java.util.function.Function;
 
-public record PageResponse<T>(List<T> content, PageMetadata metadata) {
+public record PageResponse<T>(List<T> content, PageMetadata paging) {
     public static <T> PageResponse<T> of(Page<T> page) {
         return new PageResponse<>(page.getContent(), PageMetadata.from(page));
     }
