@@ -21,9 +21,9 @@ public class MDCFilter extends OncePerRequestFilter {
         try {
             String requestId = request.getHeader("X-Request-Id");
             if (!StringUtils.hasText(requestId)) requestId = UUID.randomUUID().toString();
-            request.setAttribute("requestId", requestId);
+            MDC.put("requestId", requestId);
             String requestDatetime = DateUtils.getCurrentDatetime();
-            request.setAttribute("requestDatetime", requestDatetime);
+            MDC.put("requestDatetime", requestDatetime);
             filterChain.doFilter(request, response);
         } finally {
             MDC.clear();
